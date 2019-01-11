@@ -1,5 +1,4 @@
 <?php
-include_once 'login_limit.php';
 $name = @$_GET['name'] ? $_GET['name'] : '2naive.cn';
 $name = urldecode($name);
 $type = @$_GET['type'] ? $_GET['type'] : 0;
