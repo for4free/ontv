@@ -1,0 +1,13 @@
+li{
+    list-style: none;
+    /* float: left; */
+    margin: 10px;
+    background-color: #00a2e0;
+    padding: 10px;
+    width: 235px;
+    font-size: 16px;
+    /* 多余省略 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,60 @@
+<FilesMatch "\.(bak|inc|lib|sh|tpl|lbi|dwt)$">
+    order deny,allow
+    deny from all
+</FilesMatch>
+
+# 禁止目录索引
+<Files *>
+    Options -Indexes
+</Files>
+
+
+<ifmodule mod_expires.c>
+expiresactive on
+
+#默认所有文件缓存时间设置为300秒
+expiresdefault a300
+
+#html,plain-text缓存300秒
+expiresbytype text/html a300
+expiresbytype text/plain a300
+
+#css, javascript缓存一个小时
+expiresbytype text/css a3600
+expiresbytype application/x-javascript a3600
+
+#图标文件缓存30天
+expiresbytype image/x-icon a2592000
+
+#image类缓存一个星期
+expiresbytype image/jpeg a604800
+expiresbytype image/gif a604800
+expiresbytype image/png a604800
+
+#其它文件缓存一个星期
+expiresbytype application/x-shockwave-flash a604800
+expiresbytype video/x-flv a604800
+expiresbytype application/pdf a604800
+
+</ifmodule>
+
+RewriteEngine on
+RewriteBase /
+rewritecond %{request_filename} !-f
+
+#常规伪静态
+RewriteRule index.html index.php
+
+#40?
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+
+#新伪静态规则
+RewriteRule m-m _admin_mod_api.php
+RewriteRule url-is-(.*) vip_play.php?id=$1
+RewriteRule play-(.*?)-(.*?)-n-(.*)-v-(.*)\.html video_play.php?id=$1&type=$2&name=$3&version=$4
+
+
+
+
+
