@@ -1,5 +1,4 @@
 <?php
-include_once 'login_limit.php';
 $type = @$_GET['type'] ? $_GET['type'] : header("Location: /");
 $type = base64_decode($type);
 include_once 'global_api/global.php';
