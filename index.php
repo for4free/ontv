@@ -1,5 +1,4 @@
 <?php
-    include_once 'login_limit.php';
     include_once 'global_api/_search_limit.php';
     create_uuid();
 ?>
